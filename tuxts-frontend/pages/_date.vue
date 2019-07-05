@@ -1,43 +1,32 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand to="/">
-        Tuxts
-      </b-navbar-brand>
-    </b-navbar>
+    <h1>{{ date }}</h1>
 
-    <b-row align-h="center">
-      <b-col cols="6">
-        <h1>{{ date }}</h1>
+    <b-list-group v-if="texts.length">
+      <b-list-group-item v-for="text in texts" :key="text.id">
+        {{ text.text }}
+      </b-list-group-item>
+    </b-list-group>
 
-        <ul v-if="texts.length">
-          <li v-for="text in texts" :key="text.id">
-            {{ text.text }}
-          </li>
-        </ul>
+    <p v-else class="text-secondary">
+      No texts.
+    </p>
 
-        <p v-else>
-          No texts.
-        </p>
+    <hr />
 
-        <hr />
+    <div v-if="nextDateHref" class="float-left">
+      Next date:
+      <nuxt-link :to="nextDateHref">
+        {{ nextDateText }}
+      </nuxt-link>
+    </div>
 
-        <ul>
-          <li v-if="nextDateHref">
-            Next date:
-            <nuxt-link :to="nextDateHref">
-              {{ nextDateText }}
-            </nuxt-link>
-          </li>
-          <li>
-            Previous date:
-            <nuxt-link :to="prevDateHref">
-              {{ prevDateText }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </b-col>
-    </b-row>
+    <div class="float-right">
+      Previous date:
+      <nuxt-link :to="prevDateHref">
+        {{ prevDateText }}
+      </nuxt-link>
+    </div>
   </div>
 </template>
 

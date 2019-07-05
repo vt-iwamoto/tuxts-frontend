@@ -1,6 +1,7 @@
 <template>
   <b-list-group-item @click.self="showForm">
     <span v-show="!formShow" @click.self="showForm">{{ text.text }}</span>
+
     <b-form v-show="formShow">
       <b-form-group invalid-feedback="Text is required">
         <b-form-input
@@ -12,25 +13,29 @@
           required
         />
       </b-form-group>
-      <b-button variant="outline-secondary" @click="hideForm">
-        Cancel
-      </b-button>
-      <b-button variant="outline-danger" @click="modalShow = !modalShow">
-        Delete
-      </b-button>
-      <b-button variant="outline-primary" @click="update">
-        Update
-      </b-button>
-      <b-modal
-        v-model="modalShow"
-        hide-header
-        cancel-variant="outline-secondary"
-        ok-variant="outline-primary"
-        @ok="$emit('delete', text, index)"
-      >
-        <p>Are you sure you want to delete this text?</p>
-      </b-modal>
+
+      <div class="text-right">
+        <b-button variant="outline-secondary" @click="hideForm">
+          Cancel
+        </b-button>
+        <b-button variant="outline-danger" @click="modalShow = !modalShow">
+          Delete
+        </b-button>
+        <b-button variant="outline-primary" @click="update">
+          Update
+        </b-button>
+      </div>
     </b-form>
+
+    <b-modal
+      v-model="modalShow"
+      hide-header
+      cancel-variant="outline-secondary"
+      ok-variant="outline-primary"
+      @ok="$emit('delete', text, index)"
+    >
+      <p>Are you sure you want to delete this text?</p>
+    </b-modal>
   </b-list-group-item>
 </template>
 
@@ -81,7 +86,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 div.list-group-item:hover {
   background-color: #f8f9fa;
   cursor: pointer;

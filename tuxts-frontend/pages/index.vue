@@ -1,68 +1,57 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand to="/">
-        Tuxts
-      </b-navbar-brand>
-    </b-navbar>
+    <h1>{{ date }}</h1>
 
-    <b-row align-h="center">
-      <b-col cols="6">
-        <h1>{{ date }}</h1>
+    <b-list-group v-if="texts.length">
+      <tuxt-text
+        v-for="(text, index) in texts"
+        :key="text.id"
+        :text="text"
+        :index="index"
+        @delete="deleteText"
+        @update="updateText"
+      />
+    </b-list-group>
 
-        <b-list-group v-if="texts.length">
-          <tuxt-text
-            v-for="(text, index) in texts"
-            :key="text.id"
-            :text="text"
-            :index="index"
-            @delete="deleteText"
-            @update="updateText"
-          />
-        </b-list-group>
+    <p v-else class="text-secondary">
+      No texts.
+    </p>
 
-        <p v-else>
-          No texts.
-        </p>
+    <div class="text-right">
+      <b-button variant="outline-secondary" @click="modalShow = !modalShow">
+        Add text
+      </b-button>
+    </div>
 
-        <b-form>
-          <b-button variant="outline-secondary" @click="modalShow = !modalShow">
-            New text
-          </b-button>
-          <b-modal
-            v-model="modalShow"
-            hide-header
-            cancel-variant="outline-secondary"
-            ok-variant="outline-primary"
-            ok-title="Add"
-            @ok="addText"
-            @hidden="newTextState = null"
-          >
-            <b-form-group invalid-feedback="Text is required">
-              <b-form-input
-                ref="newText"
-                v-model="newText"
-                :state="newTextState"
-                rows="3"
-                max-rows="8"
-                required
-              />
-            </b-form-group>
-          </b-modal>
-        </b-form>
+    <b-modal
+      v-model="modalShow"
+      hide-header
+      cancel-variant="outline-secondary"
+      ok-variant="outline-primary"
+      ok-title="Add"
+      @ok="addText"
+      @hidden="newTextState = null"
+    >
+      <b-form-group invalid-feedback="Text is required">
+        <b-form-input
+          ref="newText"
+          v-model="newText"
+          :state="newTextState"
+          rows="3"
+          max-rows="8"
+          required
+        />
+      </b-form-group>
+    </b-modal>
 
-        <hr />
+    <hr />
 
-        <ul>
-          <li>
-            Previous date:
-            <nuxt-link :to="prevDate">
-              {{ prevDate }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </b-col>
-    </b-row>
+    <p class="float-right">
+      Previous date:
+      <nuxt-link :to="prevDate">
+        {{ prevDate }}
+      </nuxt-link>
+    </p>
   </div>
 </template>
 
