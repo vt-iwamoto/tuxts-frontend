@@ -7,7 +7,7 @@
     </b-navbar>
     <b-container>
       <b-row align-h="center">
-        <b-col md="6" sm="12">
+        <b-col md="7" sm="12">
           <nuxt />
         </b-col>
       </b-row>
