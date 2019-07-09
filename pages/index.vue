@@ -64,6 +64,10 @@ export default {
     TuxtText
   },
 
+  head() {
+    return { title: 'Tuxts: Texts with Nuxt.js' }
+  },
+
   data() {
     return { modalShow: false, newText: '', newTextState: null }
   },
