@@ -46,12 +46,12 @@
 
     <hr />
 
-    <p class="float-right">
-      Previous date:
+    <div class="float-right">
+      Previous:
       <nuxt-link :to="prevDate">
         {{ prevDate }}
       </nuxt-link>
-    </p>
+    </div>
   </div>
 </template>
 

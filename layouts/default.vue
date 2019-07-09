@@ -5,11 +5,13 @@
         Tuxts
       </b-navbar-brand>
     </b-navbar>
-    <b-row align-h="center">
-      <b-col cols="6">
-        <nuxt />
-      </b-col>
-    </b-row>
+    <b-container>
+      <b-row align-h="center">
+        <b-col md="6" sm="12">
+          <nuxt />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 

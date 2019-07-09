@@ -15,14 +15,14 @@
     <hr />
 
     <div v-if="nextDateHref" class="float-left">
-      Next date:
+      Next:
       <nuxt-link :to="nextDateHref">
         {{ nextDateText }}
       </nuxt-link>
     </div>
 
     <div class="float-right">
-      Previous date:
+      Previous:
       <nuxt-link :to="prevDateHref">
         {{ prevDateText }}
       </nuxt-link>
