@@ -21,7 +21,7 @@
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.25",
+    "moment-timezone": "^0.5.35",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
